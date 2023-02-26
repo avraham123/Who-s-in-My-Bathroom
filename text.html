@@ -1,155 +1,291 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Who's in my Bathroom</title>
- 
-  
-  <style>
-     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: rgb(183, 230, 255);
-    }
+  <head>
+    <title>Who's in my Room</title>
+
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-image:url("mountain.jpeg");
+        color: #333;
+      }
     
-    h1 {
-      text-align: center;
-      font-size: 36px;
-      margin-bottom: 20px;
-      color: darkslateblue;
-    }
-
-    #status {
-      text-align: center;
-      border: 10px solid green;
-    padding: 10px;
-    border-radius: 5px;
-    display: inline-block;
-    margin: 20px 0;
-    }
-
-    .occupied-light {
-    border-color: lightcoral;
-  }
-
-  .occupied-dark {
-    border-color: crimson;
-  }
-
-    #message {
-      font-size: 24px;
-      margin-bottom: 20px;
-      color: darkslateblue;
-    }
+      h1 {
+        font-size: 74px;
+        margin: 60px 0 40px;
+        color: #4586ff;
+        text-shadow: 1px 1px 0 rgb(255, 255, 255);
+        transition: all 0.3s ease;
+      }
     
-    form {
-      margin: 20px 0;
-      text-align: center;
-    }
+      h1:hover {
+        transform: translateY(-5px);
+      }
+    
+      #status {
+        border: 20px solid green;
+        padding: 20px;
+        border-radius: 50px;
+        display: inline-block;
+        margin: 1px;
+        color: #4564ff;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+        
+      }
 
-    label {
-      font-size: 18px;
-      margin-right: 10px;
-    }
+      
+    
+      #status.occupied-light {
+        border-color: #458cff;
+      }
+    
+      #status.occupied-dark {
+        border-color: #333;
+      }
+    
+      #message {
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: rgb(255, 255, 255);
+        text-align: center;
+      }
 
-    input[type="text"] {
-      padding: 5px;
-      font-size: 18px;
-      width: 200px;
-    }
+     
+    
+      form {
+        margin: 60px auto;
+        text-align: center;
+        width: 50%;
+        max-width: 300px;
+        color: white;
+        
+      }
+    
+      label {
+        display: block;
+        font-size: 28px;
+        margin-bottom: 10px;
+        text-align: center;
+        color: rgb(255, 255, 255);
+      }
+    
+      input[type="text"] {
+        padding: 10px;
+        font-size: 26px;
+        width: 100%;
+        border-radius: 5px;
+        border: none;
+        background-color: #eee;
+        color: rgb(40, 130, 255);
+        text-align: center;
+      }
+    
+      input[type="button"] {
+        padding: 10px 20px;
+        font-size: 28px;
+        margin: 20px 0;
+        background-color: #4564ff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+    
+      input[type="button"]:hover {
+        background-color: #85c8ff;
+      }
+    
+      input:disabled {
+        cursor: not-allowed;
+      }
+    
+      table {
+        margin: 20px auto;
+        border-collapse: collapse;
+        border: 1px solid #ccc;
+        width: 80%;
+        max-width: 800px;
+        
+      }
 
-    input[type="button"] {
-      padding: 5px 20px;
-  font-size: 18px;
-  margin: 0 10px;
-  background-color: rgb(159, 231, 255);
-  color: white;
-  border: 1px solid darkslateblue;
-  border-radius: 5px;
-  cursor: pointer;
-    }
+      
+    
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+      }
+    
+      th {
+        background-color: #4845ff;
+        color: white;
+        text-transform: uppercase;
+        font-size: 18px;
+      }
+    
+      td {
+        background-color: #fff;
+        color: #333;
+      }
 
-    input[type="button"]:hover {
-  background-color: darkslateblue;
-  color: white;
-}
 
-    table {
-      margin: 20px auto;
-      border-collapse: collapse;
-      border: 1px solid darkslateblue;
-      width: 80%;
-    }
-
-    th,
-    td {
-      border: 1px solid darkslateblue;
-      padding: 10px;
-      text-align: left;
-    }
-
-    th {
-      background-color: rgb(143, 188, 255);
-    }
-
-    #clock {
-  font-size: 36px;
+      #clock {
+  font-size: 50px;
+  font-weight: bold;
   text-align: center;
   margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  color: white;
 }
 
-  </style>
-</head>
+#clock:hover {
+  transform: scale(1.1);
+}
 
-<body>
+#enter:hover {
+  background-color: #4caf50;
+}
 
-    <h1>Who's in my Bathroom?</h1>
+
+
+#enter {
+  margin-right: 40px;
+}
+
+
+#enter:hover:not(:disabled) {
+  transform: scale(1.2);
+}
+
+
+#leave:hover {
+  background-color: #f44336;
+}
+
+#leave:hover:not(:disabled) {
+  transform: scale(1.2);
+}
+
+container {
+  display: flex;
+}
+
+.left {
+  width: 50%;
+  padding-right: 20px;
+}
+
+.right {
+  width: 50%;
+  position: relative;
+}
+
+
+
+    </style>
+    
+  </head>
+
+  <body>
+
+    <div class="container">
+    <h1>מי בחדר שלי</h1>
+
     <div id="clock"></div>
 
     <form>
-      <label for="name">Your name:</label>
+      <label for="name">:השם שלך</label>
       <input type="text" id="name" required>
       <br><br>
-      <input type="button" value="Enter" id="enter">
-      <input type="button" value="Leave" id="leave">
+      <input type="button" value="כניסה" id="enter"  >
+      <input type="button" value="יציאה" id="leave" disabled="disabled">
     </form>
-    
+
+
+
+
+
     <div id="status">
-      <p id="message">Bathroom is free</p>
+      <p id="message">החדר פנוי</p>
     </div>
+
     
+  </div>
+
+
     <table id="time-table">
       <tr>
-        <th>Start Time</th>
-        <th>Duration</th>
-        <th>User</th>
+        <th>זמן כניסה</th>
+        <th>זמן שהות</th>
+        <th>משתמש</th>
+        <th>קצר או ארוך</th>
       </tr>
+
     </table>
+
     
 
-  <script>
+   
+
+    
+
+   
+
+
+
+    <script>
 const status = document.querySelector("#status");
 const message = document.querySelector("#message");
 const enterBtn = document.querySelector("#enter");
 const leaveBtn = document.querySelector("#leave");
 const table = document.querySelector("#time-table");
 const nameInput = document.querySelector("#name");
+const averageDisplay = document.querySelector("#average");
+const form = document.querySelector('form');
+
+
+
 
 let startTime;
 let intervalId;
+let entered = false;
+
+
+
 
 enterBtn.addEventListener("click", function() {
-  message.innerHTML = "Occupied";
+
+entered = true;
+  document.getElementById("leave").removeAttribute("disabled");
+  
+  message.innerHTML = "תפוס";
   status.style.borderColor = "crimson";
   intervalId = setInterval(switchColor, 2000);
   startTime = Date.now();
   intervalId = setInterval(updateTime, 1000);
+  
 });
 
+
+
+
 leaveBtn.addEventListener("click", function() {
+
+
+  document.getElementById("leave")
   clearInterval(intervalId);
   status.style.borderColor = "green";
   const endTime = Date.now();
   const duration = (endTime - startTime) / 1000;
+  
 
   const row = document.createElement("tr");
   const startCell = document.createElement("td");
@@ -157,17 +293,38 @@ leaveBtn.addEventListener("click", function() {
   row.appendChild(startCell);
 
   const durationCell = document.createElement("td");
-  durationCell.innerHTML = duration + " seconds";
+  durationCell.innerHTML = "שניות " + duration ;
   row.appendChild(durationCell);
 
   const userCell = document.createElement("td");
   userCell.innerHTML = nameInput.value;
   row.appendChild(userCell);
 
+  //const longCell = document.createElement("td");
+  //longCell.innerHTML = short\long
+  let isShort = "YES!";
+  if (duration <60)
+  {
+    isShort = "מהיר";
+  }
+  else isShort = "ארוך";
+  const LongCell = document.createElement("td");
+  LongCell.innerHTML = isShort;
+  row.appendChild(LongCell);
+
+
   table.appendChild(row);
 
-  message.innerHTML = "Bathroom is free";
-});
+  message.innerHTML = "החדר פנוי";
+  form.reset();
+  document.getElementById("leave").disabled = true;
+  
+}
+
+);
+
+
+
 
 function switchColor() {
   if (status.classList.contains("occupied-light")) {
@@ -181,7 +338,7 @@ function switchColor() {
 function updateTime() {
   const currentTime = Date.now();
   const duration = (currentTime - startTime) / 1000;
-  message.innerHTML = `Occupied (${duration.toFixed(0)} seconds)`;
+  message.innerHTML =  ` תפוס (${duration.toFixed(0)} שניות)`;
 }
 
 function formatDate(date) {
@@ -217,9 +374,14 @@ function updateClock() {
   document.getElementById("clock").innerHTML = `${hours}:${minutes}:${seconds}`;
 }, 1000);
 
+window.onload = function () {
+    if (! localStorage.justOnce) {
+        localStorage.setItem("justOnce", "true");
+        window.location.reload();
+    }
+}
 
 
   return `${hours}:${minutes}:${seconds}`;
 }
   </script>
-  
