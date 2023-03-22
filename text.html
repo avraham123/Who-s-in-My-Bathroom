@@ -8,14 +8,14 @@
       body {
         font-family: Arial, sans-serif;
         text-align: center;
-        background-image:url("mountain.jpeg");
+        background-color: #d7e7e9;
         color: #333;
       }
     
       h1 {
-        font-size: 74px;
+        font-size: 54px;
         margin: 60px 0 40px;
-        color: #4586ff;
+        color: rgb(0, 49, 81);
         text-shadow: 1px 1px 0 rgb(255, 255, 255);
         transition: all 0.3s ease;
       }
@@ -30,18 +30,18 @@
         border-radius: 50px;
         display: inline-block;
         margin: 1px;
-        color: #4564ff;
-        font-size: 24px;
+        color: rgb(0, 49, 81);
+        font-size: 20px;
         font-weight: bold;
         text-align: center;
-        text-transform: uppercase;
+        
         
       }
 
       
     
       #status.occupied-light {
-        border-color: #458cff;
+        color: rgb(0, 49, 81);
       }
     
       #status.occupied-dark {
@@ -51,7 +51,7 @@
       #message {
         font-size: 20px;
         margin-bottom: 20px;
-        color: rgb(255, 255, 255);
+        color: rgb(0, 49, 81);;
         text-align: center;
       }
 
@@ -62,35 +62,35 @@
         text-align: center;
         width: 50%;
         max-width: 300px;
-        color: white;
+        color: rgb(0, 49, 81);
         
       }
     
       label {
         display: block;
-        font-size: 28px;
+        font-size: 22px;
         margin-bottom: 10px;
         text-align: center;
-        color: rgb(255, 255, 255);
+        color: rgb(0, 49, 81);
       }
     
       input[type="text"] {
         padding: 10px;
-        font-size: 26px;
+        font-size: 20px;
         width: 100%;
         border-radius: 5px;
         border: none;
         background-color: #eee;
-        color: rgb(40, 130, 255);
+        color: rgb(0, 49, 81);
         text-align: center;
       }
     
       input[type="button"] {
         padding: 10px 20px;
-        font-size: 28px;
+        font-size: 20px;
         margin: 20px 0;
-        background-color: #4564ff;
-        color: #fff;
+        color: rgb(255, 255, 255);
+        background-color: rgb(0, 49, 81);
         border: none;
         border-radius: 5px;
         cursor: pointer;
@@ -98,7 +98,7 @@
       }
     
       input[type="button"]:hover {
-        background-color: #85c8ff;
+        color: rgb(0, 49, 81);
       }
     
       input:disabled {
@@ -108,7 +108,7 @@
       table {
         margin: 20px auto;
         border-collapse: collapse;
-        border: 1px solid #ccc;
+        border: 1px solid rgb(0, 49, 81);
         width: 80%;
         max-width: 800px;
         
@@ -124,26 +124,26 @@
       }
     
       th {
-        background-color: #4845ff;
-        color: white;
-        text-transform: uppercase;
+        color: rgb(255, 255, 255);
+        background-color: rgb(0, 49, 81);
+        
         font-size: 18px;
       }
     
       td {
-        background-color: #fff;
+        
         color: #333;
       }
 
 
       #clock {
-  font-size: 50px;
+  font-size: 39px;
   font-weight: bold;
   text-align: center;
   margin-top: 20px;
   cursor: pointer;
   transition: all 0.5s ease;
-  color: white;
+  color: rgb(0, 49, 81);
 }
 
 #clock:hover {
@@ -197,16 +197,16 @@ container {
   <body>
 
     <div class="container">
-    <h1>מי בחדר שלי</h1>
+    <h1>Who's in My Room</h1>
 
     <div id="clock"></div>
 
     <form>
-      <label for="name">:השם שלך</label>
+      <label for="name">Your Name:</label>
       <input type="text" id="name" required>
       <br><br>
-      <input type="button" value="כניסה" id="enter"  >
-      <input type="button" value="יציאה" id="leave" disabled="disabled">
+      <input type="button" value="Enter" id="enter"  >
+      <input type="button" value="Exit" id="leave" disabled="disabled">
     </form>
 
 
@@ -214,7 +214,7 @@ container {
 
 
     <div id="status">
-      <p id="message">החדר פנוי</p>
+      <p id="message">Room is Empty</p>
     </div>
 
     
@@ -223,10 +223,10 @@ container {
 
     <table id="time-table">
       <tr>
-        <th>זמן כניסה</th>
-        <th>זמן שהות</th>
-        <th>משתמש</th>
-        <th>קצר או ארוך</th>
+        <th>Time of Enterence</th>
+        <th>Time of stay</th>
+        <th>Name</th>
+        <th>Fast or Long</th>
       </tr>
 
     </table>
@@ -266,7 +266,7 @@ enterBtn.addEventListener("click", function() {
 entered = true;
   document.getElementById("leave").removeAttribute("disabled");
   
-  message.innerHTML = "תפוס";
+  message.innerHTML = "Occupied";
   status.style.borderColor = "crimson";
   intervalId = setInterval(switchColor, 2000);
   startTime = Date.now();
@@ -293,7 +293,7 @@ leaveBtn.addEventListener("click", function() {
   row.appendChild(startCell);
 
   const durationCell = document.createElement("td");
-  durationCell.innerHTML = "שניות " + duration ;
+  durationCell.innerHTML =  + duration + " Seconds ";
   row.appendChild(durationCell);
 
   const userCell = document.createElement("td");
@@ -305,9 +305,9 @@ leaveBtn.addEventListener("click", function() {
   let isShort = "YES!";
   if (duration <60)
   {
-    isShort = "מהיר";
+    isShort = "Fast";
   }
-  else isShort = "ארוך";
+  else isShort = "Long";
   const LongCell = document.createElement("td");
   LongCell.innerHTML = isShort;
   row.appendChild(LongCell);
@@ -315,7 +315,7 @@ leaveBtn.addEventListener("click", function() {
 
   table.appendChild(row);
 
-  message.innerHTML = "החדר פנוי";
+  message.innerHTML = "Room is Empty";
   form.reset();
   document.getElementById("leave").disabled = true;
   
@@ -338,7 +338,7 @@ function switchColor() {
 function updateTime() {
   const currentTime = Date.now();
   const duration = (currentTime - startTime) / 1000;
-  message.innerHTML =  ` תפוס (${duration.toFixed(0)} שניות)`;
+  message.innerHTML =  ` Occupied (${duration.toFixed(0)} Seconds)`;
 }
 
 function formatDate(date) {
